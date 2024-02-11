@@ -3,11 +3,13 @@ from rest_framework import viewsets, generics
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer, PostCommentsViewSerializer
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination import PageNumberPagination
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = PageNumberPagination
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
